@@ -1,9 +1,45 @@
 import Image from 'next/image';
 import {Suspense} from 'react';
-import {ArrowRight,ArrowDown,Map,Route,Send,Bookmark,Mountain} from 'lucide-react';
+import {ArrowRight} from 'lucide-react';
 import {getTrips} from '@/lib/db';
 import type {Trip} from '@/lib/types';
 import {Catalog} from '@/components/catalog';
 import credits from '@/public/photo-credits.json';
 export const dynamic='force-dynamic';
-export default async function Home(){let trips:Trip[]=[];let error=false;try{trips=await getTrips();}catch{error=true;}const hero=credits[4];return <main id="contenido"><section className="page-width pt-6 md:pt-10"><div className="relative grid overflow-hidden rounded-lg bg-secondary/50 md:min-h-[440px] md:grid-cols-[47%_53%]"><div className="relative order-2 flex flex-col justify-center px-6 py-8 md:order-1 md:px-10 md:py-12 xl:px-12"><p className="mb-5 flex items-center gap-2 text-sm text-primary"><span className="h-1.5 w-1.5 rounded-full bg-primary"/> Menos prisa. Más montaña.</p><h1 className="relative z-10 max-w-[480px] text-[32px] leading-[1.15] font-bold tracking-[-1.5px] lg:text-5xl">Encuentra tu próxima ruta de montaña</h1><p className="relative z-10 mt-5 max-w-[360px] text-base leading-relaxed text-muted-foreground md:text-lg">Compara caminos, conoce su exigencia y empieza a imaginar el recorrido.</p><a href="#viajes" className="primary-link relative z-10 mt-7 w-fit">Explorar viajes<ArrowRight size={19}/></a><div className="mt-7 flex items-center gap-2 text-sm text-muted-foreground"><Mountain size={16}/> Marca ficticia. Viajes de ejemplo</div></div><div className="relative order-1 h-[220px] md:order-2 md:h-full"><Image src={hero.file} alt="Relieve nevado del macizo del Mont Blanc bajo un cielo azul" fill priority sizes="(min-width:768px) 55vw, 100vw" className="object-cover object-[50%_45%]"/><div className="absolute inset-x-0 bottom-0 flex justify-between bg-gradient-to-t from-foreground/70 to-transparent px-6 pt-16 pb-5 text-white"><span className="text-sm">El horizonte es solo el comienzo.</span><ArrowDown size={19}/></div></div><svg aria-hidden="true" viewBox="0 0 1250 460" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full opacity-70 md:opacity-100"><path className="topo-line" d="M-20 365C120 280 60 85 230 70S390 235 480 275 550 450 690 390 710 140 860 90 990 230 1280 125"/><path className="topo-line" d="M-10 395C140 310 85 110 235 100S360 235 460 305 580 480 710 420 750 170 870 120 1010 260 1280 160"/></svg></div><div className="mt-3 flex justify-end"><details className="max-w-[560px] text-sm text-muted-foreground"><summary className="min-h-11 cursor-pointer text-right">Sobre la fotografía de portada</summary><p className="pb-3">Fotografía ilustrativa de <a href={hero.source} target="_blank" rel="noreferrer" className="underline">{hero.author}</a> · <a href={hero.licenseUrl} target="_blank" rel="noreferrer" className="underline">{hero.license}</a>. Recorte de visualización. No representa un itinerario.</p></details></div></section><Suspense fallback={<div className="page-width h-96 animate-pulse bg-secondary"/>}><Catalog initialTrips={trips} initialError={error}/></Suspense><section id="como-funciona" className="mt-4 bg-secondary/60 py-12 md:py-16"><div className="page-width"><div className="flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p className="mb-2 text-base text-primary">Del paisaje a los detalles</p><h2 className="text-[26px] font-bold tracking-[-1px] md:text-4xl">Cómo solicitar información</h2></div><p className="max-w-[390px] text-base text-muted-foreground">El almacenamiento es real dentro de esta demostración. No hay contacto externo ni confirmación de disponibilidad.</p></div><ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{[{icon:Map,title:'Explora y compara',text:'Filtra por región, duración y dificultad para encontrar una ruta que te interese.'},{icon:Route,title:'Conoce el recorrido',text:'Revisa las etapas, el desnivel y la preparación recomendada en cada ficha.'},{icon:Send,title:'Completa tu solicitud',text:'Indica el viaje, tus datos y qué te gustaría saber. Se guardarán de forma privada.'},{icon:Bookmark,title:'Conserva la referencia',text:'Consulta tu comprobante desde este navegador, también después de recargar.'}].map((s,i)=><li key={s.title} className="border-t border-primary/25 pt-5"><div className="mb-4 flex items-center justify-between text-primary"><s.icon size={25} strokeWidth={1.4}/><span className="text-sm">Paso {i+1}</span></div><h3 className="text-lg font-bold">{s.title}</h3><p className="mt-3 text-base leading-relaxed text-muted-foreground">{s.text}</p></li>)}</ol></div></section></main>;}
+export default async function Home(){
+ let trips:Trip[]=[];let error=false;try{trips=await getTrips();}catch{error=true;}const hero=credits[0];
+ return <main id="contenido">
+  <section className="page-width hero-section">
+   <div className="hero-panel">
+    <div className="hero-copy">
+     <p className="hero-motto">Menos prisa. Más montaña.</p>
+     <h1>Tu próximo<br/>horizonte.</h1>
+     <p className="hero-proposition">Explora rutas de montaña, compara su exigencia y solicita información sobre tu recorrido.</p>
+     <a href="#viajes" className="primary-link">Explorar viajes<ArrowRight size={19}/></a>
+     <svg aria-hidden="true" viewBox="0 0 600 500" preserveAspectRatio="none" className="hero-topography">
+      <path className="topo-line" d="M-60 450C60 310 12 180 145 100S295 220 330 295 395 390 475 290 505 150 660 190"/>
+      <path className="topo-line" d="M-50 478C90 338 42 207 160 132S275 233 310 319 414 420 501 317 533 179 660 218"/>
+      <path className="topo-line" d="M-40 506C120 366 72 235 175 164S255 246 290 343 433 450 527 344 561 208 660 246"/>
+      <path className="topo-line" d="M-30 534C150 394 102 263 190 196S235 259 270 367 452 480 553 371 589 237 660 274"/>
+     </svg>
+    </div>
+    <div className="hero-landscape">
+     <Image src={hero.file} alt="Las tres torres de roca de Tre Cime di Lavaredo, en las Dolomitas" fill priority quality={90} sizes="(min-width:768px) 60vw, 100vw" className="object-cover object-[50%_48%]"/>
+     <div className="landscape-caption"><span>Dolomitas</span><span>Tre Cime di Lavaredo</span></div>
+    </div>
+   </div>
+   <div className="hero-credit"><details><summary>Fotografía y licencia</summary><p>Fotografía ilustrativa de <a href={hero.source} target="_blank" rel="noreferrer" className="underline">{hero.author}</a> · <a href={hero.licenseUrl} target="_blank" rel="noreferrer" className="underline">{hero.license}</a>. Imagen redimensionada; recorte y tratamiento tonal en pantalla. No representa un itinerario verificado.</p></details></div>
+  </section>
+  <Suspense fallback={<div className="page-width h-96 animate-pulse bg-secondary"/>}><Catalog initialTrips={trips} initialError={error}/></Suspense>
+  <section id="como-funciona" className="how-section">
+   <div className="page-width"><div className="how-intro"><h2>Del camino a los detalles.</h2><p>Cómo solicitar información y conservar tu comprobante privado.</p></div>
+    <ol className="how-steps">{[
+     {title:'Encuentra tu ruta',text:'Filtra por región, duración y dificultad. Revisa las etapas y la preparación recomendada.'},
+     {title:'Cuéntanos qué buscas',text:'Abre la ficha y completa tus datos, tu periodo de interés y tus preguntas.'},
+     {title:'Conserva tu comprobante',text:'La solicitud queda guardada de forma privada. Puedes consultarla en este navegador después de recargar.'}
+    ].map((s,i)=><li key={s.title}><span className="step-label">Paso {i+1}</span><h3>{s.title}</h3><p>{s.text}</p></li>)}</ol>
+    <p className="how-note">Guardar una solicitud no confirma disponibilidad ni reserva un viaje. No se envían mensajes externos ni se garantiza una respuesta.</p>
+   </div>
+  </section>
+ </main>;
+}

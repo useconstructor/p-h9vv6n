@@ -18,3 +18,76 @@
 @keyframes trace{from{stroke-dashoffset:2400;opacity:0}to{stroke-dashoffset:0;opacity:1}}
 @media(max-width:767px){.photo-focus{object-position:var(--mobile-focal);}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;}*,*::before,*::after{animation:none!important;transition:none!important;}}
+@layer components {
+ .global-notice{@apply border-t border-primary/10 bg-secondary/50 py-1.5 text-center text-[13px] leading-5 text-muted-foreground;}
+ .hero-section{@apply pt-4 md:pt-7;}
+ .hero-panel{@apply relative grid overflow-hidden rounded-lg bg-secondary/60 md:grid-cols-[43%_57%];}
+ .hero-copy{@apply relative order-2 overflow-hidden px-6 py-6 md:order-1 md:px-8 md:py-10 xl:px-12 xl:py-12;}
+ .hero-copy h1{@apply relative z-10 text-[42px] leading-[1.02] font-bold tracking-[-2px] md:text-[52px] xl:text-[76px] xl:tracking-[-3.5px];}
+ .hero-motto{@apply relative z-10 mb-4 text-sm font-semibold text-primary md:mb-7;}
+ .hero-proposition{@apply relative z-10 mt-4 max-w-[340px] text-base leading-relaxed text-muted-foreground md:mt-6 md:text-lg;}
+ .hero-copy .primary-link{@apply relative z-10 mt-5 md:mt-7;}
+ .hero-topography{@apply pointer-events-none absolute -right-20 -bottom-16 h-[110%] w-[120%] opacity-60;}
+ .hero-landscape{@apply relative order-1 h-[190px] md:order-2 md:h-auto md:min-h-[390px] xl:min-h-[450px];}
+ .hero-landscape img{filter:saturate(.82) contrast(1.07);}
+ .landscape-caption{@apply absolute inset-x-0 bottom-0 flex justify-between gap-2 bg-gradient-to-t from-foreground/80 to-transparent px-5 pt-16 pb-4 text-sm text-white md:px-7;}
+ .landscape-caption span:first-child{@apply font-heading font-semibold;}
+ .hero-credit{@apply flex justify-end text-sm text-muted-foreground;}
+ .hero-credit details{@apply max-w-[560px];}
+ .hero-credit summary{@apply flex min-h-11 cursor-pointer items-center justify-end;}
+ .hero-credit p{@apply pb-3 text-base;}
+ .catalog-section{@apply pt-5 pb-7 md:pt-8 md:pb-10;}
+ .catalog-heading{@apply mb-5 flex flex-col justify-between gap-2 md:flex-row md:items-end md:mb-6;}
+ .catalog-heading h2{@apply text-[28px] leading-tight font-bold tracking-[-1px] md:text-4xl;}
+ .catalog-heading p{@apply text-base text-muted-foreground;}
+ .filter-fields{@apply grid grid-cols-1 gap-3 rounded-lg border border-primary/15 bg-secondary/50 p-4 md:grid-cols-3 md:gap-4 md:p-5;}
+ .filter-field{@apply block min-w-0 text-sm font-semibold text-muted-foreground;}
+ .filter-select{@apply mt-1 block min-h-12 w-full rounded-md border border-border bg-background py-2 pr-8 pl-3 text-base font-normal text-foreground;}
+ .filter-select.is-selected{@apply border-primary font-semibold;}
+ .catalog-status{@apply mt-1 mb-3 flex min-h-11 items-center justify-between gap-2 text-sm text-muted-foreground;}
+ .filter-reset{@apply flex min-h-11 items-center gap-2 px-1 text-sm font-semibold text-primary disabled:opacity-50;}
+ .catalog-grid{@apply grid gap-x-7 md:grid-cols-2 lg:grid-cols-1;}
+ .trip-card{@apply grid grid-cols-[110px_minmax(0,1fr)] gap-x-4 border-b py-5 first:pt-0 md:flex md:flex-col md:pb-6 md:pt-0 md:mb-6 lg:mb-0 lg:grid lg:grid-cols-[38%_minmax(0,1fr)] lg:gap-x-10 lg:py-7;}
+ .catalog-photo{@apply h-[125px] rounded-md md:h-auto md:aspect-[1.75] lg:aspect-[1.85];}
+ .trip-copy{@apply min-w-0 md:flex md:flex-1 md:flex-col md:pt-4 lg:pt-0;}
+ .trip-region{@apply mb-1 text-sm font-semibold text-primary md:mb-2;}
+ .trip-title{@apply text-[21px] leading-tight font-bold tracking-[-.5px] md:min-h-[60px] md:text-[25px] lg:min-h-0 lg:text-[30px];}
+ .trip-title a{@apply min-h-0;}
+ .trip-description{@apply mt-3 mb-4 max-w-[580px] text-base leading-relaxed text-muted-foreground;}
+ .trip-footer{@apply mt-3 flex flex-wrap items-center justify-between gap-2 border-t pt-2 md:mt-auto lg:mt-4;}
+ .catalog-ascent-note{@apply mt-3 text-sm text-muted-foreground;}
+ .how-section{@apply bg-secondary/60 py-8 md:py-12;}
+ .how-intro{@apply flex flex-col justify-between gap-3 md:flex-row md:items-end;}
+ .how-intro h2{@apply text-[28px] leading-tight font-bold tracking-[-1px] md:text-4xl;}
+ .how-intro>p{@apply max-w-[330px] text-base text-muted-foreground;}
+ .how-steps{@apply mt-6 grid gap-5 md:mt-8 md:grid-cols-3 md:gap-8;}
+ .how-steps li{@apply border-t border-primary/25 pt-4;}
+ .step-label{@apply text-sm font-semibold text-primary;}
+ .how-steps h3{@apply mt-2 text-lg font-bold;}
+ .how-steps p{@apply mt-2 text-base leading-relaxed text-muted-foreground;}
+ .how-note{@apply mt-6 max-w-[740px] border-t border-primary/20 pt-4 text-sm leading-relaxed text-muted-foreground;}
+ .site-footer{@apply mt-0;}
+}
+@media(max-width:767px){
+ .global-notice .page-width{padding-inline:12px;}
+ .trip-copy{display:contents;}
+ .trip-region,.trip-title{grid-column:2;}
+ .trip-card>a{grid-column:1;grid-row:1 / 4;}
+ .trip-region{align-self:end;}
+ .trip-title{grid-row:2;margin-bottom:6px;}
+ .trip-description{grid-column:1 / -1;margin-top:12px;margin-bottom:12px;}
+ .trip-copy>dl{grid-column:1 / -1;}
+ .trip-footer{grid-column:1 / -1;}
+ .trip-card{grid-template-rows:auto auto 1fr;}
+ .trip-card:not(:first-child){padding-top:20px;}
+ .detail-page~footer{padding-bottom:84px;}
+}
+@media(min-width:768px) and (max-width:1023px){
+ .filter-fields{grid-template-columns:minmax(0,1.18fr) minmax(0,1.22fr) minmax(0,1fr);gap:12px;padding:16px;}
+ .filter-select{padding-left:10px;padding-right:22px;}
+ .trip-description{min-height:130px;}
+ .trip-copy>dl{margin-top:auto;margin-bottom:16px;}
+}
+@media(max-width:359px){.page-width{padding-inline:18px;}.global-notice{font-size:12px;}.hero-copy{padding:20px;}.hero-copy h1{font-size:38px;}.hero-landscape{height:160px;}.hero-proposition{line-height:1.4;}.trip-card{grid-template-columns:90px minmax(0,1fr);gap:12px;}.trip-title{font-size:20px;}}
+@media(min-width:768px) and (max-width:1023px){.hero-copy h1{font-size:44px;}.hero-copy{padding-inline:28px;}.trip-description{min-height:110px;}}
+@media(min-width:768px) and (max-width:1023px){.catalog-grid:not(:has(.trip-card:nth-child(2))) .trip-description{min-height:0;}.catalog-grid:not(:has(.trip-card:nth-child(2))) .trip-title{min-height:0;}}
