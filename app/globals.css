@@ -86,7 +86,7 @@
  .trip-copy>dl{gap:8px;margin-top:auto;margin-bottom:12px;}
  .trip-copy>dl dt{font-size:13px;gap:4px;}
  .trip-copy>dl dd{font-size:16px;}
- .how-steps li:last-child{grid-column:1 / -1;max-width:480px;}
+ .how-steps li:last-child{grid-column:1 / -1;}
 }
 @media(max-width:359px){
  .page-width{padding-inline:18px;}
@@ -95,4 +95,21 @@
  .hero-copy h1{font-size:32px;}
  .hero-landscape{height:145px;}
  .trip-title{font-size:22px;}
+}
+
+@media(max-width:767px){
+ .hero-copy{padding-block:14px;}
+ .hero-motto{display:none;}
+ .hero-copy h1{font-size:32px;}
+ .hero-proposition{margin-top:8px;}
+ .hero-copy .primary-link{margin-top:12px;}
+ .hero-credit summary{min-height:36px;}
+ .catalog-heading{margin-bottom:8px;}
+ .catalog-status{margin-bottom:8px;}
+ .trip-copy{display:contents;}
+ .trip-region{grid-row:1;margin:0;}
+ .trip-title{grid-row:2;}
+ .trip-card>a{grid-row:3;}
+ .trip-card{row-gap:8px;}
+ .trip-description{margin-block:4px 10px;}
 }
