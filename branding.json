@@ -1,0 +1,13 @@
+{
+  "primaryColor": "#F4F7FA",
+  "secondaryColor": "#DCEAF0",
+  "backgroundColor": "#F4F7FA",
+  "textColor": "#243746",
+  "accentColor": "#20594D",
+  "fontHeading": "Manrope",
+  "fontBody": "Source Sans 3,",
+  "borderRadius": "0.5rem",
+  "logoText": "Cumbre",
+  "logoImageUrl": null,
+  "tone": "trustworthy"
+}

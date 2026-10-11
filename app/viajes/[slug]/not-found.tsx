@@ -1,0 +1,2 @@
+import Link from 'next/link';import {Compass,ArrowLeft} from 'lucide-react';
+export default function MissingTrip(){return <main id="contenido" className="page-width py-20"><Compass size={48} className="text-primary"/><h1 className="mt-6 text-[32px] font-bold md:text-5xl">Este viaje no existe.</h1><p className="mt-4 text-lg text-muted-foreground">Puede que el enlace haya cambiado. El catálogo te espera con otros caminos.</p><Link href="/#viajes" className="primary-link mt-7"><ArrowLeft size={18}/>Volver al catálogo</Link></main>;}

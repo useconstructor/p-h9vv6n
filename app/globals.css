@@ -1,33 +1,20 @@
 @import "tailwindcss";
-
-@theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0 0);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.145 0 0);
-  --color-primary: oklch(0.205 0 0);
-  --color-primary-foreground: oklch(0.985 0 0);
-  --color-secondary: oklch(0.97 0 0);
-  --color-secondary-foreground: oklch(0.205 0 0);
-  --color-muted: oklch(0.97 0 0);
-  --color-muted-foreground: oklch(0.556 0 0);
-  --color-accent: oklch(0.97 0 0);
-  --color-accent-foreground: oklch(0.205 0 0);
-  --color-destructive: oklch(0.577 0.245 27.325);
-  --color-border: oklch(0.922 0 0);
-  --color-input: oklch(0.922 0 0);
-  --color-ring: oklch(0.708 0 0);
-  --radius: 0.5rem;
+@theme inline {
+ --font-sans:var(--font-source); --font-heading:var(--font-manrope);
+ --color-background:var(--nieve); --color-foreground:var(--roca); --color-primary:var(--pino); --color-primary-foreground:var(--blanco); --color-secondary:var(--glaciar); --color-secondary-foreground:var(--roca); --color-muted:var(--glaciar); --color-muted-foreground:var(--secondary-text); --color-accent:var(--glaciar); --color-accent-foreground:var(--pino); --color-destructive:var(--sendero); --color-destructive-foreground:var(--blanco); --color-border:var(--line); --color-input:var(--line); --color-ring:var(--pino); --color-card:var(--blanco); --color-card-foreground:var(--roca);
 }
-
+:root {--nieve:#F4F7FA;--glaciar:#DCEAF0;--pino:#20594D;--roca:#243746;--sendero:#B64A28;--blanco:#FFFFFF;--secondary-text:#526675;--line:#cad7de;}
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+ *{@apply border-border;} html{@apply scroll-smooth scroll-pt-24;} body{@apply bg-background text-foreground font-sans text-lg antialiased;} h1,h2,h3,nav{@apply font-heading;} button,a,input,select,textarea{@apply outline-offset-4;} :focus-visible{@apply outline-2 outline-primary;} button,a,select{@apply touch-manipulation;} button{@apply cursor-pointer;} ::selection{@apply bg-primary text-white;}
 }
+@layer components {
+ .page-width{@apply mx-auto w-full max-w-[1328px] px-6 md:px-10 xl:px-12;}
+ .primary-link{@apply inline-flex min-h-12 items-center justify-center gap-5 rounded-lg bg-primary px-6 py-3 font-heading text-base font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-primary/90 active:translate-y-0;}
+ .text-link{@apply inline-flex min-h-11 items-center gap-3 font-heading text-base font-semibold text-primary underline-offset-4 hover:underline;}
+ .field{@apply mt-2 min-h-12 w-full rounded-lg border border-input bg-white px-3 py-2 text-base text-foreground focus-visible:ring-2 focus-visible:ring-primary;}
+ .topo-line{@apply fill-none stroke-primary/20;stroke-width:1.25;stroke-dasharray:2400;animation:trace 2.4s ease-out both;}
+ .photo-focus{object-position:var(--focal);}
+}
+@keyframes trace{from{stroke-dashoffset:2400;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+@media(max-width:767px){.photo-focus{object-position:var(--mobile-focal);}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;}*,*::before,*::after{animation:none!important;transition:none!important;}}

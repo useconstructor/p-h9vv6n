@@ -1,0 +1,2 @@
+import Link from 'next/link';import {ArrowLeft} from 'lucide-react';
+export default function Missing(){return <main id="contenido" className="page-width py-16"><h1 className="text-[32px] font-bold md:text-4xl">No encontramos este camino.</h1><p className="mt-4 text-muted-foreground">Vuelve a la exploración para descubrir los viajes de ejemplo.</p><Link href="/#viajes" className="primary-link mt-6"><ArrowLeft size={18}/>Volver al catálogo</Link></main>;}

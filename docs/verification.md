@@ -1,0 +1,13 @@
+# Verification — 11 October 2026
+
+Production build and TypeScript: passed on Next.js 16.4.0. ESLint: passed. Runtime dependency audit: zero vulnerabilities. Tooling-only audit still reports the upstream braces/fast-glob chain in eslint-config-next; the suggested downgrade would leave the required Next.js 16 stack.
+
+Browser Chromium: populated catalogue and route detail inspected at 1440, 768 and 390 px, without horizontal overflow. Empty, no-result, recoverable catalogue error, open form, form error and success states captured. URL combinations, sharing, back navigation and return from detail preserve filters. Mobile menu opens, follows its target and closes. Reduced motion disables the ornamental animation. Focus starts in name, wraps inside the dialog and returns to the invoking action. Invalid submission focuses the first invalid field. A simulated 503 retains exact entered values. Successful submission and private receipt after reload passed. Secure and HttpOnly session cookie verified. A fresh session cannot retrieve personal data using a reference.
+
+API: three concurrent identical keys return the same reference, with exactly one record. Changed payload with the same key returns 409. Required fields, bad types, invalid trip, excessive length and honeypot return 422. Five unique requests per session per hour are permitted; the next returns 429, while an existing idempotent retry succeeds. A separate persistent network limit also exists. Database normalized spaces, email case and optional period exactly as expected, preserving message line breaks. Foreign key violation rejected. Four seed rows persisted without duplication.
+
+AA contrast ratios: pine/white 8.08, rock/snow 11.42, secondary/snow 5.55, secondary/glacier 4.85, error/white 5.25, pine/glacier 6.57. Image overlay text uses a dark gradient. Photos are local licensed Wikimedia assets, with source records and visible credits. Both fonts are local with OFL files.
+
+Evidence is outside shipped source at /tmp/cumbre-evidence (screenshots, scripts and raw logs). Test records use explicitly marked QA data and reserved example.invalid addresses; no external messages are sent. Records were not deleted.
+
+Limit: supplied remote Turso credentials were absent. Persistence was tested with @libsql/client against a temporary file-backed SQLite database at /tmp/cumbre-qa.db, using the same schema, migrations, transactions and API. This is not verification against remote Turso. Configure the platform's TURSO_DATABASE_URL and TURSO_AUTH_TOKEN before deployment. No production database fallback exists in application code. Screen reader hardware, actual touch devices, remote network latency and distributed Turso concurrency were not tested.
