@@ -7,7 +7,7 @@ import {Catalog} from '@/components/catalog';
 import credits from '@/public/photo-credits.json';
 export const dynamic='force-dynamic';
 export default async function Home(){
- let trips:Trip[]=[];let error=false;try{trips=await getTrips();}catch{error=true;}const hero=credits[0];
+ let trips:Trip[]=[];let error=false;try{trips=await getTrips();}catch{error=true;}const hero=credits.find(c=>c.file==='/photos/4.jpg')!;
  return <main id="contenido">
   <section className="page-width hero-section">
    <div className="hero-panel">
@@ -24,11 +24,11 @@ export default async function Home(){
      </svg>
     </div>
     <div className="hero-landscape">
-     <Image src={hero.file} alt="Las tres torres de roca de Tre Cime di Lavaredo, en las Dolomitas" fill priority quality={90} sizes="(min-width:768px) 60vw, 100vw" className="object-cover object-[50%_48%]"/>
-     <div className="landscape-caption"><span>Dolomitas</span><span>Tre Cime di Lavaredo</span></div>
+     <Image src={hero.file} alt="Cumbres nevadas del Mont Blanc y del Mont Blanc du Tacul" fill priority quality={90} sizes="(min-width:768px) 60vw, 100vw" className="object-cover object-[50%_42%]"/>
+     <div className="landscape-caption"><span>Horizonte alpino</span><span>Mont Blanc</span></div>
     </div>
    </div>
-   <div className="hero-credit"><details><summary>Fotografía y licencia</summary><p>Fotografía ilustrativa de <a href={hero.source} target="_blank" rel="noreferrer" className="underline">{hero.author}</a> · <a href={hero.licenseUrl} target="_blank" rel="noreferrer" className="underline">{hero.license}</a>. Imagen redimensionada; recorte y tratamiento tonal en pantalla. No representa un itinerario verificado.</p></details></div>
+   <div className="hero-credit"><details><summary>Fotografía y licencia</summary><p>Fotografía ilustrativa de <a href={hero.source} target="_blank" rel="noreferrer" className="underline">{hero.author}</a> · <a href={hero.licenseUrl} target="_blank" rel="noreferrer" className="underline">{hero.license}</a>. Recorte de visualización; original sin modificaciones. No representa un itinerario verificado.</p></details></div>
   </section>
   <Suspense fallback={<div className="page-width h-96 animate-pulse bg-secondary"/>}><Catalog initialTrips={trips} initialError={error}/></Suspense>
   <section id="como-funciona" className="how-section">
